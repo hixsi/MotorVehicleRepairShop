@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4></h4>
+<div class="col-6">
+  <form action="#" th:action="@{/motor-vehicles/production-date}" method="get">
+    <div class="form-group">
+      <label for="productionDate">Date</label>
+      <input class="form-control" type="date" th:name="productionDate" placeholder="Production data" id="productionDate">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Find vehicle</button>
+  </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

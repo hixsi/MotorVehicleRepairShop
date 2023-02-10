@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<h1 th:text="'Welcome  ' + ${welcome}"></h1>
+<header th:replace="fragments :: header"></header>
+<div class="container col-9">
+    <h1>You are not authorized. </h1>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

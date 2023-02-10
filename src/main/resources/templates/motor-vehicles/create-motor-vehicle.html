@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register the motorVehicle</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/motor-vehicles/create}" th:object="${motorVehicle}" method="post">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="regNum">RegNum</label>
+                <input class="form-control" type="number" th:field="*{regNum}" placeholder="regNum" id="regNum">
+                <span class="text-danger" th:if="${#fields.hasErrors('regNum')}" th:errors="*{regNum}">regNum Error</span>
+            </div>
+
+            <div class="form-group">
+                <label for="owner">owner</label>
+                <select class="form-control" th:field="${motorVehicle.owner}" id="owner">
+                    <option value="">Select owner</option>
+                    <option th:each="owner : ${owners}" th:value="${owner.id}"
+                            th:text="${owner.firstName}+ ' -> ' + ${owner.lastName}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="motorVehicleLabel">motorVehicleLabel</label>
+                <select class="form-control" th:field="${motorVehicle.motorVehicleLabel}" id="motorVehicleLabel">
+                    <option value="">Select motorVehicleLabel</option>
+                    <option th:each="motorVehicleLabel : ${motorVehicleLabels}" th:value="${motorVehicleLabel}" th:text="${motorVehicleLabel}"></option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="motorVehicleModel">Model</label>
+                    <input class="form-control" type="text" th:field="*{motorVehicleModel}" placeholder="motorVehicleModel" id="motorVehicleModel">
+                    <span class="text-danger" th:if="${#fields.hasErrors('motorVehicleModel')}" th:errors="*{motorVehicleModel}">Model Error</span>
+                </div>
+
+            <div class="form-group">
+                <label for="productionDate">production Date</label>
+                <input class="form-control" type="date" th:field="*{productionDate}" id="productionDate">
+                <span class="text-danger" th:if="${#fields.hasErrors('productionDate')}"
+                      th:errors="*{productionDate}">production Date Error</span>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save motorVehicle</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

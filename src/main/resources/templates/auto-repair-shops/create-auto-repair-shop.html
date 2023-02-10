@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register the autoRepairShop</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/auto-repair-shops/create}" th:object="${autoRepairShop}" method="post">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" th:field="*{name}" placeholder="Name" id="name">
+                <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+            </div>
+
+            <div class="form-group">
+                <label for="foundationDate">Foundation Date</label>
+                <input class="form-control" type="date" th:field="*{foundationDate}" id="foundationDate">
+                <span class="text-danger" th:if="${#fields.hasErrors('foundationDate')}"
+                      th:errors="*{foundationDate}">Foundation Date Error</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="worksWithMotorVehicleLabel">motorVehicleLabel</label>
+            <select class="form-control" th:field="${autoRepairShop.worksWithMotorVehicleLabel}" id="worksWithMotorVehicleLabel">
+                <option value="">Select motorVehicleLabel</option>
+                <option th:each="worksWithMotorVehicleLabel : ${worksWithMotorVehicleLabels}" th:value="${worksWithMotorVehicleLabel}" th:text="${worksWithMotorVehicleLabel}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save autoRepairShop</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

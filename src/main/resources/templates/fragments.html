@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Auto Repair Shop Management</title>
+    <meta charset="UTF-8">
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<header th:fragment="header">
+    <h1>Auto Repair Shop Management System</h1>
+
+    <div class="col-3" sec:authorize="isAuthenticated()">
+        Welcome
+        <span sec:authentication="name"></span>
+        <a class="btn" th:href="@{/logout}">Logout</a>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navigation">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auto-repair-shops">List of autoRepairShops</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auto-repair-shops/create-auto-repair-shop">Create autoRepairShop</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/employees">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/employees/create-employee">Create Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/appointments">Appointments</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/appointments/create-appointment">Create Appointment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/motor-vehicles">Motor Vehicles</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/motor-vehicles/create-motor-vehicle">Add Motor Vehicle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/services">Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/services/create-service">Add Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/motor-vehicles/search-motor-vehicle-label">Search Motor Vehicles By Label</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/motor-vehicles/search-motor-vehicle">Search Motor Vehicles By Production Date</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/owners">Owners</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/owners/create-owner">Add Owner</a>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+<footer page-footer font-small>
+
+</footer>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Appointments in auto repair shop:</h4>
+<div class="col-6">
+    <h3 th:unless="${appointments} and ${appointments.size()}">There are no appointments!</h3>
+    <table th:if="${appointments.size()>0}" class="table table-hover">
+<!--        <th>User</th>-->
+        <th>Start</th>
+        <th>End</th>
+        <th>Auto repair shop</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+
+
+        <tr th:each="appointment : ${appointments}">
+<!--            <td th:text="${appointment.username}"></td>-->
+
+            <td th:text="${appointment.start}"></td>
+            <td th:text="${appointment.end}"></td>
+            <td th:text="${appointment.autoRepairShopName}"></td>
+            <td th:text="${appointment.status}"></td>
+            <td><a class="btn btn-info" th:href="@{'/appointments/edit-appointment/'+${appointment.id}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/appointments/delete/'+${appointment.id}}">Delete</a></td>
+
+
+        </tr>
+    </table>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

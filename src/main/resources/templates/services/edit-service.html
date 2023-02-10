@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register service</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/services/update/{id}(id=${id})}" th:object="${service}" method="post">
+
+
+        <div class="form-group">
+            <label for="autoRepairShop">Auto repair shop</label>
+            <select class="form-control" th:field="${service.autoRepairShop}" id="autoRepairShop">
+                <option value="">Select autoRepairShop</option>
+                <option th:each="autoRepairShop : ${autoRepairShops}" th:value="${autoRepairShop.id}"
+                        th:text="${autoRepairShop.name}+ ' -> ' + ${autoRepairShop.foundationDate}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="motorVehicle">Motor vehicle</label>
+            <select class="form-control" th:field="${service.motorVehicle}" id="motorVehicle">
+                <option value="">Select motor vehicle</option>
+                <option th:each="motorVehicle : ${motorVehicles}" th:value="${motorVehicle.id}"
+                        th:text="${motorVehicle.motorVehicleLabel}+ ' -> ' + ${motorVehicle.motorVehicleModel}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="autoRepairShopTypesOfService">Service</label>
+            <select class="form-control" th:field="${service.autoRepairShopTypesOfService}" id="autoRepairShopTypesOfService">
+                <option value="">Select autoRepairShopTypesOfService</option>
+                <option th:each="autoRepairShopTypesOfService : ${autoRepairShopTypesOfServices}" th:value="${autoRepairShopTypesOfService}" th:text="${autoRepairShopTypesOfService}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input class="form-control" type="number" th:field="${service.price}" placeholder="price" id="Price">
+            <span class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save service</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

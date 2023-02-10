@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4 th:if="${autoRepairShops.size()>0}" th:text="'autoRepairShops: ' + ${autoRepairShops.size()}"> </h4>
+<div class=" col-6">
+    <h3 th:unless="${autoRepairShops} and ${autoRepairShops.size()}">There are no autoRepairShops!</h3>
+    <table th:if="${autoRepairShops.size()>0}" class="table table-hover">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Foundation Date</th>
+        <th>Works with label</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr th:each="autoRepairShop : ${autoRepairShops}">
+            <td th:text="${autoRepairShop.id}"></td>
+            <td th:text="${autoRepairShop.name}"></td>
+            <td th:text="${autoRepairShop.foundationDate}"></td>
+            <td th:text="${autoRepairShop.worksWithMotorVehicleLabel}"></td>
+            <td><a class="btn btn-info" th:href="@{'/auto-repair-shops/edit-auto-repair-shop/'+${autoRepairShop.id}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/auto-repair-shops/delete/'+${autoRepairShop.id}}">Delete</a></td>
+        </tr>
+    </table>
+    </div>
+    <footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

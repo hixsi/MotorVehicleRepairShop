@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register employee</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/employees/update/{id}(id=${id})}" th:object="${employee}" method="post">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input class="form-control" type="text" th:field="${employee.firstName}" placeholder="First Name" id="firstName">
+            <span class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input class="form-control" type="text" th:field="${employee.lastName}" placeholder="Last Name" id="lastName">
+            <span class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
+        </div>
+        <div class="form-group">
+            <label for="qualification">Qualification</label>
+            <select class="form-control" th:field="${employee.qualification}" id="qualification">
+                <option value="">Select Qualification</option>
+                <option th:each="qualification : ${qualifications}" th:value="${qualification}" th:text="${qualification}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="autoRepairShop">autoRepairShop</label>
+            <select class="form-control" th:field="${employee.autoRepairShop}" id="autoRepairShop">
+                <option value="">Select autoRepairShop</option>
+                <option th:each="autoRepairShop : ${autoRepairShops}" th:value="${autoRepairShop.id}"
+                        th:text="${autoRepairShop.name}+ ' -> ' + ${autoRepairShop.foundationDate}"></option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Save employee</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

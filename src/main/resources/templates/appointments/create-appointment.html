@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Register appointment</h4>
+<div class="col-6">
+    <form action="#" th:action="@{/appointments/create}" th:object="${appointment}" method="post">
+
+<!--        <div class="form-group">-->
+<!--&lt;!&ndash;            <input class="form-control" type="text" th:field="${appointment.user}"  id="user" th:value="${user}">&ndash;&gt;-->
+<!--            <select class="form-control" th:field="${appointment.user}"  id="user">-->
+<!--                <option value="">you are</option>-->
+<!--                <option  th:value="${user}">here</option>-->
+<!--            </select>-->
+
+
+        <div class="form-group">
+            <label for="start">Date</label>
+            <input class="form-control" type="datetime-local" th:field="${appointment.start}" placeholder="start" id="start">
+            <span class="text-danger" th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Date start Error</span>
+        </div>
+        <div class="form-group">
+            <label for="end">Date</label>
+            <input class="form-control" type="datetime-local" th:field="${appointment.end}" placeholder="end" id="end">
+            <span class="text-danger" th:if="${#fields.hasErrors('end')}" th:errors="*{end}">Date end Error</span>
+        </div>
+
+        <div class="form-group">
+            <label for="autoRepairShop">auto repair shop</label>
+            <select class="form-control" th:field="${appointment.autoRepairShop}" id="autoRepairShop">
+                <option value="">Select auto repair shop</option>
+                <option th:each="autoRepairShop : ${autoRepairShops}" th:value="${autoRepairShop.id}"
+                        th:text="${autoRepairShop.name}+ ' -> ' + ${autoRepairShop.foundationDate}"></option>
+            </select>
+        </div>
+
+
+
+
+
+<!--        <div class="form-group">-->
+<!--            <label for="status">Status</label>-->
+<!--            <select class="form-control" th:field="${appointment.status}" id="status">-->
+<!--                <option value="">Select Status</option>-->
+<!--                <option th:each="qualification : ${qualifications}" th:value="${qualification}" th:text="${qualification}"></option>-->
+<!--            </select>-->
+<!--        </div>-->
+
+
+        <button type="submit" class="btn btn-primary">Save appointment</button>
+    </form>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
